@@ -56,9 +56,17 @@ public class Index {
 	public void indexPage(String url, Elements paragraphs) {
 		// make a TermCounter and count the terms in the paragraphs
         // TODO: fill this in
-		
+		TermCounter tc = new TermCounter(url);
+
+		//WikiFetcher wf = new WikiFetcher();
+		//Elements paragraphs = wf.fetchWikipedia(url);		
+
+		tc.processElements(paragraphs);
+
 		// for each term in the TermCounter, add the TermCounter to the index
-        // TODO: fill this in
+        	for (String term: keySet()) {
+			add(term, tc);
+		}
 	}
 
 	/**
